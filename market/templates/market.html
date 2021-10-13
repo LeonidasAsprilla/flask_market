@@ -1,35 +1,52 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Página de Market
+Página de Market
 {% endblock %}
 
 {% block content %}
-    <table class="table table-hover table-dark">
-        <thead>
-            <tr>
-                <!-- Your Columns HERE -->
-                <th scope="col">ID</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Código de Barra</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Opciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Your rows inside the table HERE: -->
-            {% for item in items %}
+<div class="row" style="margin-top: 20px; margin-left: 20px;">
+    <div class="col-8">
+        <h2>Items disponibles en el Market</h2>
+        <p>Haz click en uno de los items para empezar a comprar</p>
+        <br>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <!-- Your Columns HERE -->
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Código de Barra</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Your rows inside the table HERE: -->
+                
+                {% for item in items %}
+                {% include 'includes/items_modals.html' %}
                 <tr>
                     <td>{{ item.id }}</td>
                     <td>{{ item.name }}</td>
                     <td>{{ item.barcode }}</td>
                     <td>${{ item.price }}</td>
                     <td>
-                        <button class="btn btn-outline btn-info">Más Info</button>
-                        <button class="btn btn-outline btn-success">Compar este elemento</button>
+                        <button class="btn btn-outline btn-info" data-toggle="modal"
+                            data-target="#Modal-MoreInfo-{{item.id}}">Más Info</button>
+                        <button class="btn btn-outline btn-success" data-toggle="modal"
+                            data-target="#Modal-PurchaseConfirm-{{item.id}}">Comprar este item</button>
                     </td>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-4">
+        <h2>Mis Items</h2>
+        <p>Haz click en vender para poner el item de vuelta sobre el Market</p>
+        <br>
+    </div>
+</div>
+
 {% endblock %}
