@@ -6,7 +6,7 @@ from flask.helpers import flash
 from market.models import Item, User
 from market.forms import RegisterForm, LoginForm
 from market import db   
-from flask_login import login_user
+from flask_login import login_user, logout_user
 
 @app.route("/")
 @app.route("/home")
@@ -48,3 +48,9 @@ def login_page():
             flash('Nombre de Usuario y Contraseña Incorrectos! Por favor intente nuevamente.', category='danger')
         
     return render_template('login.html', form=form)
+
+@app.route('/logout')
+def logout_page():
+    logout_user()
+    flash("Te has desconectado con exito!", category='info')
+    return redirect(url_for("home_page"))

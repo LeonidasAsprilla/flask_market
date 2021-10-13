@@ -42,7 +42,7 @@
                         <a class="nav-link">Bienvenido, {{ current_user.username }} </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Salir</a>
+                        <a class="nav-link" href="{{ url_for('logout_page') }}">Salir</a>
                     </li>
                 </ul>
             {% else %}
