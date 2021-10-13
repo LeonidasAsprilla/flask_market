@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Página de Registro
+{% endblock %}
+
+{% block content %}
+<body class="text-center">
+    <div class="container">
+        <form action="" method="POST" class="form-register" style="color: white;">
+            {{ form.hidden_tag() }}
+            <img class="mb-4"
+                src="https://res.cloudinary.com/jimshapedcoding/image/upload/v1597332609/android-icon-192x192_ove2a7.png"
+                alt="" height="200em">
+            <h1 class="h3 mb-3 font-weight-normal">
+                Por favor, Cree su Cuenta
+            </h1>
+            <br>
+
+            {{ form.username.label() }}
+            {{ form.username(class="form-control", placeholder="Nombre de Usuario") }}
+
+            {{ form.email_addres.label() }}
+            {{ form.email_addres(class="form-control", placeholder="Email") }}
+
+            {{ form.password1.label() }}
+            {{ form.password1(class="form-control", placeholder="Contraseña") }}
+
+            {{ form.password2.label() }}
+            {{ form.password2(class="form-control", placeholder="Confirme Contraseña") }}
+
+            <br>
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+        </form>
+    </div>
+</body>
+{% endblock %}
