@@ -15,9 +15,13 @@ class RegisterForm(FlaskForm):
         if email_addres:
             raise ValidationError("Email ya existe! Por favor intente con otro correo.")
 
-    username = StringField(label='Nombre Usuario:', validators=[Length(min=2, max=30), DataRequired()])
+    username = StringField(label='Nombre de Usuario:', validators=[Length(min=2, max=30), DataRequired()])
     email_addres = StringField(label='Correo', validators=[Email(), DataRequired()])
     password1 = PasswordField(label='Contraseña:', validators=[Length(min=6), DataRequired()])
     password2 = PasswordField(label='Repita Contraseña', validators=[EqualTo('password1'), DataRequired()])
     submit = SubmitField(label='Crear Cuenta')
 
+class LoginForm(FlaskForm):
+    username = StringField(label='Nombre de Usuario', validators=[DataRequired()])
+    password = PasswordField(label='Contraseña', validators=[DataRequired()])
+    submit = SubmitField(label='Ingresar')
