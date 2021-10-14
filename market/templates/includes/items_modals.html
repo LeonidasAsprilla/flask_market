@@ -1,7 +1,8 @@
 <style>
     .modal-body,
     .modal-header,
-    .modal-footer {
+    .modal-footer,
+    .btn-outline-success {
         background-color: #212121;
     }
 </style>
@@ -22,7 +23,7 @@
                 {{ item.description }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -42,10 +43,23 @@
                 </button>
             </div>
             <div class="modal-body">
-                Estás seguro que quieres comprar {{ item.name }} por ${{ item.price }} ?
+                <form method="POST">
+                    {{ purchase_form.hidden_tag() }}
+                    <h4 class="text-center">
+                        Estás seguro que quieres comprar {{ item.name }} por ${{ item.price }} ?
+                    </h4>
+                    <br>
+                    <h6 class="text-center">
+                        Comprarás este item haciendo click en el botón comprar. 
+                    </h6>
+                    <br>
+                    <div class="d-grid mx-auto">
+                        {{ purchase_form.submit(class="bnt btn-outline-success btn-lg") }}
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar
                 </button>
             </div>
         </div>
