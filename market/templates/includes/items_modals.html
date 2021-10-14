@@ -53,6 +53,7 @@
                         Comprarás este item haciendo click en el botón comprar. 
                     </h6>
                     <br>
+                    <input id="purchased_item" name="purchased_item" type="hidden" value="{{ item.name }}">
                     <div class="d-grid mx-auto">
                         {{ purchase_form.submit(class="bnt btn-outline-success btn-lg") }}
                     </div>
